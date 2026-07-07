@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Mentorship Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            <div class="logo">AlumniConnect</div>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#mentors">Mentors</a></li>
+                <li><a href="#booking">Book Session</a></li>
+                <li><a href="#forum">Discussion Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>Find Your Perfect Alumni Mentor</h1>
+                <p>Connect with experienced alumni who can help guide your career, share industry insights, and support your professional growth.</p>
+                <a href="#mentors" class="btn btn-primary">Find Mentor</a>
+            </div>
+        </section>
+
+        <!-- Dashboard / Statistics Section -->
+        <section id="dashboard" class="dashboard-section">
+            <h2>Platform Activity</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Mentors</h3>
+                    <p id="stat-mentors" class="stat-number">4</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Booking Requests</h3>
+                    <p id="stat-bookings" class="stat-number">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Discussion Posts</h3>
+                    <p id="stat-posts" class="stat-number">0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentors Section -->
+        <section id="mentors" class="mentors-section">
+            <h2>Our Alumni Mentors</h2>
+            <p class="section-subtitle">Learn from professionals who walked the same halls and succeeded in the industry.</p>
+            <!-- Mentor cards will be generated dynamically by JavaScript in this grid -->
+            <div id="mentor-grid" class="mentor-grid"></div>
+        </section>
+
+        <!-- Booking Form Section -->
+        <section id="booking" class="booking-section">
+            <h2>Book a Mentorship Session</h2>
+            <p class="section-subtitle">Fill out the form below to request a session with one of our alumni mentors.</p>
+            
+            <div class="form-container">
+                <!-- Success message placeholder, hidden by default -->
+                <div id="booking-success" class="success-message" style="display: none;">
+                    Booking Request Submitted Successfully
+                </div>
+
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="student-name">Student Name</label>
+                        <input type="text" id="student-name" required placeholder="Your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="student-email">Email Address</label>
+                        <input type="email" id="student-email" required placeholder="Your email address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mentor-select">Select Mentor</label>
+                        <select id="mentor-select" required>
+                            <option value="" disabled selected>Choose a mentor...</option>
+                            <!-- Mentor options will be dynamically populated here by JavaScript -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="booking-date">Preferred Date</label>
+                        <input type="date" id="booking-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="booking-message">Message for the Mentor</label>
+                        <textarea id="booking-message" rows="4" required placeholder="Describe what you would like help with..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">Submit Booking Request</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Discussion Forum Section -->
+        <section id="forum" class="forum-section">
+            <h2>Discussion Forum</h2>
+            <p class="section-subtitle">Ask questions and share thoughts with the alumni community.</p>
+
+            <div class="forum-container">
+                <!-- Post creation form -->
+                <div class="forum-form-card">
+                    <h3>Ask a Question</h3>
+                    <form id="forum-form">
+                        <div class="form-group">
+                            <label for="forum-name">Your Name</label>
+                            <input type="text" id="forum-name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="forum-question">Your Question</label>
+                            <textarea id="forum-question" rows="3" required placeholder="What is on your mind?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-post">Post Question</button>
+                    </form>
+                </div>
+
+                <!-- Discussion posts container -->
+                <div class="forum-posts-container">
+                    <h3>Recent Discussions</h3>
+                    <div id="posts-list" class="posts-list">
+                        <!-- Posts will appear here dynamically -->
+                        <p id="no-posts" class="no-posts-text">No discussion posts yet. Be the first to ask a question!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 AlumniConnect Mentorship Platform. Built with HTML, CSS, and Vanilla JavaScript.</p>
+    </footer>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
