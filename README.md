@@ -1,15 +1,15 @@
 # Alumni Mentorship Platform
 
-A simple, responsive, and beginner-friendly web application for connecting students with alumni mentors.
+A simple, responsive web application for connecting students with alumni mentors.
 
 ## Tech Stack
 * HTML5 (Semantic Structure)
 * CSS3 (Flexbox & Grid)
-* Vanilla JavaScript (DOM manipulation)
+* Vanilla JavaScript (DOM Manipulation)
 
 ## Features
-* Hero Section
-* Mentor Selection Grid
-* Interactive Booking Form
-* Real-time Discussion Forum
-* Activity Dashboard Counters
+* Hero Section with call-to-action
+* Mentor Profiles — 4 cards with name, domain, experience, bio, and availability
+* Booking Requests — students can request a mentorship session with any mentor
+* Open Discussion Forum — post questions and see community responses in real time
+* Dashboard — live view of total mentors, booking requests, discussion posts, and recent activity lists
