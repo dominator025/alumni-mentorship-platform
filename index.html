@@ -33,7 +33,10 @@
 
         <!-- Dashboard / Statistics Section -->
         <section id="dashboard" class="dashboard-section">
-            <h2>Platform Activity</h2>
+            <h2>Dashboard</h2>
+            <p class="section-subtitle">View and manage mentor profiles, booking requests, and discussion activity.</p>
+
+            <!-- Stat Counters -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <h3>Total Mentors</h3>
@@ -46,6 +49,22 @@
                 <div class="stat-card">
                     <h3>Discussion Posts</h3>
                     <p id="stat-posts" class="stat-number">0</p>
+                </div>
+            </div>
+
+            <!-- Booking Requests List -->
+            <div class="dashboard-panel">
+                <h3>Booking Requests</h3>
+                <div id="dashboard-bookings">
+                    <p class="empty-text">No booking requests yet.</p>
+                </div>
+            </div>
+
+            <!-- Recent Discussion Posts List -->
+            <div class="dashboard-panel">
+                <h3>Recent Discussion Posts</h3>
+                <div id="dashboard-posts">
+                    <p class="empty-text">No discussion posts yet.</p>
                 </div>
             </div>
         </section>

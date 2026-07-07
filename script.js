@@ -45,6 +45,10 @@ var totalMentorsCount = mentors.length;
 var bookingRequestsCount = 0;
 var discussionPostsCount = 0;
 
+// Arrays to store submitted bookings and posts (in memory only)
+var bookingsList = [];
+var forumPostsList = [];
+
 // 3. Select HTML Elements
 // Selecting all elements we need to interact with.
 var mentorGrid = document.querySelector("#mentor-grid");
@@ -59,6 +63,8 @@ var noPostsText = document.querySelector("#no-posts");
 var statMentors = document.querySelector("#stat-mentors");
 var statBookings = document.querySelector("#stat-bookings");
 var statPosts = document.querySelector("#stat-posts");
+var dashboardBookings = document.querySelector("#dashboard-bookings");
+var dashboardPosts = document.querySelector("#dashboard-posts");
 
 // 4. Function to Update Dashboard Stats on Page
 // This updates the text content of the dashboard counters.
@@ -66,6 +72,41 @@ function updateDashboard() {
     statMentors.textContent = totalMentorsCount;
     statBookings.textContent = bookingRequestsCount;
     statPosts.textContent = discussionPostsCount;
+}
+
+// 5a. Function to add a booking row to the Dashboard panel
+function addBookingToDashboard(studentName, mentorName, date) {
+    // Remove the "no bookings" placeholder text on first entry
+    var emptyText = dashboardBookings.querySelector(".empty-text");
+    if (emptyText) {
+        dashboardBookings.removeChild(emptyText);
+    }
+
+    // Create a row element
+    var row = document.createElement("div");
+    row.className = "dashboard-row";
+    row.innerHTML = "<span><strong>" + studentName + "</strong> &rarr; " + mentorName + "</span><span class='row-time'>" + date + "</span>";
+
+    // Add to top of dashboard panel
+    dashboardBookings.insertBefore(row, dashboardBookings.firstChild);
+}
+
+// 5b. Function to add a post row to the Dashboard panel
+function addPostToDashboard(authorName, question) {
+    // Remove the "no posts" placeholder text on first entry
+    var emptyText = dashboardPosts.querySelector(".empty-text");
+    if (emptyText) {
+        dashboardPosts.removeChild(emptyText);
+    }
+
+    // Create a row element — trim question to 60 chars for readability
+    var shortQuestion = question.length > 60 ? question.substring(0, 60) + "..." : question;
+    var row = document.createElement("div");
+    row.className = "dashboard-row";
+    row.innerHTML = "<span><strong>" + authorName + ":</strong> " + shortQuestion + "</span><span class='row-time'>Just now</span>";
+
+    // Add to top of dashboard panel
+    dashboardPosts.insertBefore(row, dashboardPosts.firstChild);
 }
 
 // 5. Function to Generate Mentor Cards Dynamically
@@ -150,11 +191,22 @@ bookingForm.addEventListener("submit", function(event) {
     // Prevent the default form behavior of reloading the page
     event.preventDefault();
 
+    // Read form values before resetting
+    var studentName = document.querySelector("#student-name").value;
+    var selectedMentor = document.querySelector("#mentor-select").value;
+    var selectedDate = document.querySelector("#booking-date").value;
+
+    // Store booking in the bookings array
+    bookingsList.push({ student: studentName, mentor: selectedMentor, date: selectedDate });
+
     // Increment booking requests counter variable
     bookingRequestsCount = bookingRequestsCount + 1;
 
     // Update the dashboard statistics display
     updateDashboard();
+
+    // Add this booking to the dashboard panel
+    addBookingToDashboard(studentName, selectedMentor, selectedDate);
 
     // Display the success message block
     bookingSuccess.style.display = "block";
@@ -218,11 +270,17 @@ forumForm.addEventListener("submit", function(event) {
         postsList.appendChild(postItem);
     }
 
+    // Store post in the forum posts array
+    forumPostsList.push({ author: authorName, question: questionText });
+
     // Increment discussion posts counter variable
     discussionPostsCount = discussionPostsCount + 1;
 
     // Update the dashboard statistics display
     updateDashboard();
+
+    // Add this post to the dashboard panel
+    addPostToDashboard(authorName, questionText);
 
     // Reset the forum form inputs
     forumForm.reset();

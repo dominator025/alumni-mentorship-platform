@@ -163,6 +163,58 @@ section h2 {
     color: #0056b3;
 }
 
+/* Dashboard Panels for Bookings and Posts */
+.dashboard-panel {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-top: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-panel h3 {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.empty-text {
+    color: #888888;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+/* Each row inside the dashboard panels */
+.dashboard-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #444444;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.dashboard-row:last-child {
+    border-bottom: none;
+}
+
+.dashboard-row strong {
+    color: #0056b3;
+}
+
+.dashboard-row .row-time {
+    font-size: 12px;
+    color: #888888;
+    white-space: nowrap;
+}
+
+
 /* Mentors Section Grid and Card Styles */
 .mentor-grid {
     display: grid;
